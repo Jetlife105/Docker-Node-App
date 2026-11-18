@@ -38,22 +38,42 @@ Your task is to containerize this existing application using Docker. You need to
 
 ## Starting the Application
 
-- To build the docker image run the command:
+- To build the Docker image, run the command:
 
 ```bash
-
+docker build -t docker-node-app .
 ```
 
-- To run your docker container in port 3000 run the command:
+- To run the Docker container on port 3000, run the command:
 
 ```bash
-
+docker run -d -p 3000:3000 --name my-node-app docker-node-app
 ```
+
+- To view running containers:
+
+```bash
+docker ps
+```
+
+- To stop and restart the container:
+
+```bash
+docker stop my-node-app
+docker start my-node-app
+```
+
+- To remove the container after stopping it:
+
+```bash
+docker rm my-node-app
+```
+
 
 ## Reflection Question
 **Answer the following question in the space below**: How does containerization with Docker differ from using virtual machines, and why might a development team choose Docker containers over VMs for deploying applications like the one you just containerized?
 
-
+Virtual machines have their own operating systems. Docker containers share the host operating system kernel. That means Docker containers are lighter, faster to start, and more efficient in their use of system resources. One reason development teams may choose to use Docker is that it guaranties that applications will run the same way across different machines without having to manually install all of the dependencies. For this project, I used Docker to create and run a Node.js app on port 3000. Docker makes it easier to bundle the application and its dependencies together, leading to fewer compatibility issues when sharing or deploying applications.
 
 ## Application Requirements for Docker
 
@@ -71,6 +91,14 @@ When your Docker container is running correctly:
 - Navigate to `http://localhost:3000` (or whatever port you mapped)
 - You should see a success page confirming containerization worked
 - The `/api/status` endpoint should return JSON status information
+### Application Screenshot
+
+![Docker Application Running](screenshots/application.png)
+
+### API Status Screenshot
+
+![Docker API Status](screenshots/api-status.png)
+
 
 ## Troubleshooting Tips
 
